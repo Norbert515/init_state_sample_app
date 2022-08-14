@@ -1,0 +1,162 @@
+{
+    "helloWorld": "Hello World!",
+    "@helloWorld": {
+      "description": "The conventional newborn programmer greeting"
+    },
+    "pageNotFound": "The page {page} cannot be found.",
+    "@pageNotFound": {
+       "description": "Error message shown if the requested route cannot be found",
+       "placeholders": {
+          "page": {
+             "type": "String",
+             "example": "/some_route"
+          }
+       }
+    },
+    "login": "Login",
+    "@login": {
+      "description": "Login button text"
+    },
+    "loginMessage": "Welcome!\nLogin to continue.",
+    "@loginMessage": {
+        "description": "The login message shown on the login page"
+    },
+    "register": "Register",
+    "@register": {
+        "description": "Register button text"
+    },
+    "registerMessage": "Register to get started",
+    "@registerMessage": {
+        "description": "The register message shown on the register page"
+    },
+    "emailHint": "Email",
+    "@emailHint": {
+        "description": "Hint text for the email field"
+    },
+    "passwordHint": "Password",
+    "@passwordHint": {
+        "description": "Hint text for the password TextField"
+    },
+    "passwordRepeatHint": "Repeat password",
+    "@passwordRepeatHint": {
+        "description": "Hint text for the password repeat TextField"
+    },
+    "passwordWrong": "The password is wrong",
+    "@passwordWrong": {
+        "description": "Error message if the password is wrong"
+    },
+    "passwordsDontMatch": "The passwords don't match",
+    "@passwordsDontMatch":{
+        "description": "Error message if the repeated password doesn't match the original"
+    },
+    "emailAlreadyInUse": "The email is already being used",
+    "@emailAlreadyInUse": {
+        "description": "Error message when the email is already in use"
+    },
+    "emailSignInNotSupported": "Signing in with an email is not supported by the app",
+    "@emailSignInNotSupported": {
+        "description": "Error when the user tries to login with email but the firebase app is not configured to support that. This probably indicates a bug in the app itself."
+    },
+    "forgotPassword": "Forgot your password?",
+    "@forgotPassword": {
+        "description": "Link text to the forgot password page"
+    },
+    "resetPassword": "Reset password",
+    "sendPasswordResetEmail": "Send password reset email",
+    "chooseANewPassword": "Choose a new password",
+    "atLeastXCharacter": "Must be at least {number} characters.",
+    "@atLeastXCharacter": {
+        "description": "The error message to show when a password is too short.",
+        "placeholders": {
+            "number": {
+                "type": "int",
+                "example": "8"
+            }
+        }
+    },
+    "needsAnUppercaseLetter": "Needs an uppercase letter",
+    "needsADigit": "Needs a digit",
+    "needsALowercaseCharacter": "Needs a lowercase letter",
+    "needsASpecialCharacter": "Needs a special character",
+    "invalidEmail": "The email is invalid",
+    "@invalidEmail": {
+        "description": "Error message if the email is invalid"
+    },
+    "userNotFound": "The user was not found",
+    "@userNotFound": {
+        "description": "Error message if the user in question was not found"
+    },
+    "userDisabled": "The user was disabled",
+    "@userDisabled": {
+        "description": "Error message if the user in question was disabled"
+    },
+    "passwordIsXCharactersLong": "Is at least {length} characters long",
+    "@passwordIsXCharactersLong": {
+        "description": "Shown requirement when creating a new password",
+        "placeholders": {
+            "length": {
+                "type": "int",
+                "example": "8"
+            }
+        }
+    },
+    "passwordHasUppercaseLetter": "Contains an uppercase letter",
+    "@passwordHasUppercaseLetter": {
+        "description": "Shown requirement when creating a new password"
+    },
+    "passwordHasLowercaseLetter": "Contains a lowercase letter",
+    "@passwordHasLowercaseLetter": {
+        "description": "Shown requirement when creating a new password"
+    },
+    "passwordHasDigit": "Contains a digit",
+    "@passwordHasDigit": {
+        "description": "Shown requirement when creating a new password"
+    },
+    "passwordHasSpecialCharacter": "Contains a special digit",
+    "@passwordHasSpecialCharacter": {
+        "description": "Shown requirement when creating a new password"
+    },
+    "setPasswordButtonText": "Set password",
+    "@setPasswordButtonText": {
+        "description": "Button text of the password reset page"
+    },
+    "passwordResetLinkExpired": "The password reset link expired, please request a new one",
+    "@passwordResetLinkExpired": {
+        "description": "The error message to show when the password reset link expired"
+    },
+    "passwordResetLinkInvalid": "The password reset link was invalid, please try again",
+    "@passwordResetLinkInvalid": {
+        "description": "The error message to show when the password reset link was invalid"
+    },
+    "passwordWeak": "The password was too weak",
+    "@passwordWeak": {
+        "description": "Error message if the password was too weak, this should not be displayed in most cases as other measures are taken to ensure the password meets the criteria."
+    },
+    "checkYourMail": "Check your emails",
+    "@checkYourMail": {
+        "description": "Headline on the screen where the user should switch to the mail app"
+    },
+    "checkYourMailDescription": "We've sent an email to {mail} to recover your password. Tap the link in the mail to continue",
+    "@checkYourMailDescription": {
+        "description": "Description of what the user should do after password reset link was sent",
+        "placeholders": {
+            "mail": {
+                "type": "String",
+                "example": "myMail@mail.com"
+            }
+        }
+    },
+    "loginInstead1": "Want to ",
+    "@loginInstead1": {
+        "description": "Rich Text Styling is a bit awkward, the string has to be split to be styled in code"
+    },
+    "loginInstead2": "login",
+    "loginInstead3": " instead?",
+
+    "registerInstead1": "Don't have an account? ",
+    "@registerInstead1": {
+       "description": "Rich Text Styling is a bit awkward, the string has to be split to be styled in code"
+    },
+    "registerInstead2": "Register",
+    "networkError": "No internet, check your connection"
+}
