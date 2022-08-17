@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:sample_app/modules/authentication/modules/password_reset/modules/choose_new_password/state/choose_new_password_providers.dart';
 import 'package:sample_app/modules/authentication/modules/password_reset/modules/choose_new_password/state/choose_new_password_state_notifier.dart';
 import 'package:sample_app/modules/authentication/widgets/form_constraints.dart';
@@ -5,6 +6,7 @@ import 'package:sample_app/modules/authentication/widgets/password_requirements_
 import 'package:sample_app/modules/authentication/widgets/password_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sample_app/style/typography.dart';
 import 'package:sample_app/utils/s.dart';
 
 class ChooseNewPasswordPage extends ConsumerStatefulWidget {
@@ -61,8 +63,10 @@ class _ChooseNewPasswordPageState extends ConsumerState<ChooseNewPasswordPage> {
           padding: const EdgeInsets.all(16),
           child: Container(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(S.of(context).chooseANewPassword),
+                Text(S.of(context).chooseANewPassword, style: MyTypography.h3),
                 PasswordTextField(
                   onChanged: (value) {
                     ref
@@ -71,6 +75,7 @@ class _ChooseNewPasswordPageState extends ConsumerState<ChooseNewPasswordPage> {
                   },
                   errorMessage: state.getPasswordError(S.of(context)),
                 ),
+                const SizedBox(height: 8,),
                 Consumer(
                   builder: (context, ref, child) {
                     return PasswordRequirementsDisplay(
@@ -81,6 +86,7 @@ class _ChooseNewPasswordPageState extends ConsumerState<ChooseNewPasswordPage> {
                     );
                   },
                 ),
+                const SizedBox(height: 8,),
                 PasswordTextField.repeat(
                   onChanged: (value) {
                     ref
@@ -91,7 +97,11 @@ class _ChooseNewPasswordPageState extends ConsumerState<ChooseNewPasswordPage> {
                   },
                 ),
                 if (state is ChooseNewPasswordError && state.error != null)
-                  Text(state.error!.call(S.of(context))),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Text(state.error!.call(S.of(context)), style: MyTypography.button,),
+                  ),
+                const SizedBox(height: 8,),
                 Consumer(
                   builder: (context, ref, child) {
                     return ElevatedButton(
