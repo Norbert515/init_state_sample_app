@@ -3,6 +3,7 @@ import 'package:sample_app/modules/authentication/modules/login/state/login_stat
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:sample_app/navigation/routes.dart';
 
 import '../../../../utils/common.dart';
 import '../../../../utils/mock.dart';
@@ -31,7 +32,7 @@ void main() {
     );
     await tester.setupBasicApp(
       child: LoginPage(
-        navigateAfterLoginPath: '/',
+        navigateAfterLoginPath: Routes.initial,
       ),
       overrides: [
         loginStateNotifierProvider.overrideWithValue(mockLoginStateNotifier),
@@ -51,7 +52,7 @@ void main() {
 
     await tester.setupBasicApp(
       child: LoginPage(
-        navigateAfterLoginPath: '/',
+        navigateAfterLoginPath: Routes.initial,
       ),
       overrides: [
         loginStateNotifierProvider.overrideWithValue(mockLoginStateNotifier),

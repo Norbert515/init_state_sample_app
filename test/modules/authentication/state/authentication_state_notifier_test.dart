@@ -16,7 +16,6 @@ void main() {
   late MockUser mockUser;
   late MockUser mockUser2;
   late MockFirebaseAuth firebaseAuthMock;
-  late MockNavigationChangeNotifier navigationChangeNotifier;
 
   var userId = 'id';
   var userId2 = 'id2';
@@ -25,7 +24,6 @@ void main() {
     mockUser = MockUser();
     mockUser2 = MockUser();
 
-    navigationChangeNotifier = MockNavigationChangeNotifier();
     firebaseAuthMock = MockFirebaseAuth();
 
     when(() => mockUser.uid).thenReturn(userId);
@@ -37,8 +35,7 @@ void main() {
         .thenAnswer((invocation) => Stream.empty());
     when(() => firebaseAuthMock.currentUser).thenReturn(null);
 
-    notifier =
-        AuthenticationStateNotifier(firebaseAuthMock, navigationChangeNotifier);
+    notifier = AuthenticationStateNotifier(firebaseAuthMock);
 
     expect(notifier.debugState.isAuthenticated, false);
   });
@@ -48,8 +45,7 @@ void main() {
         .thenAnswer((invocation) => Stream.empty());
     when(() => firebaseAuthMock.currentUser).thenReturn(mockUser);
 
-    notifier =
-        AuthenticationStateNotifier(firebaseAuthMock, navigationChangeNotifier);
+    notifier = AuthenticationStateNotifier(firebaseAuthMock);
 
     expect(notifier.debugState.isAuthenticated, true);
     expect(
@@ -63,8 +59,7 @@ void main() {
     when(firebaseAuthMock.userChanges).thenAnswer((invocation) => userStream);
     when(() => firebaseAuthMock.currentUser).thenReturn(mockUser);
 
-    notifier =
-        AuthenticationStateNotifier(firebaseAuthMock, navigationChangeNotifier);
+    notifier = AuthenticationStateNotifier(firebaseAuthMock);
 
     expect(notifier.debugState.isAuthenticated, true);
     expect(
@@ -91,8 +86,7 @@ void main() {
         .thenAnswer((invocation) => controller.stream);
     when(() => firebaseAuthMock.currentUser).thenReturn(mockUser);
 
-    notifier =
-        AuthenticationStateNotifier(firebaseAuthMock, navigationChangeNotifier);
+    notifier = AuthenticationStateNotifier(firebaseAuthMock);
     notifier.dispose();
 
     expect(canceled, true);

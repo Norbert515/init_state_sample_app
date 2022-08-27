@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sample_app/navigation/routes.dart';
 import 'package:sample_app/style/typography.dart';
 import 'package:sample_app/modules/authentication/state/authentication_state_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+
 /// The main entry point to the application
 ///
 /// Most apps have a home page which acts as a sort of hub to navigate between
@@ -38,7 +40,7 @@ class HomePage extends StatelessWidget {
               Consumer(builder: (context, ref, child) {
                 return ElevatedButton(
                     onPressed: () {
-                      GoRouter.of(context).go('/login');
+                      GoRouter.of(context).go(Routes.login);
                       ref
                           .read(authenticationStateNotifierProvider.notifier)
                           .logout();

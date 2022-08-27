@@ -3,6 +3,7 @@ import 'package:sample_app/modules/authentication/modules/registration/state/reg
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:sample_app/navigation/routes.dart';
 import 'package:sample_app/utils/s.dart';
 
 import '../../../../utils/common.dart';
@@ -23,7 +24,7 @@ void main() {
   testWidgets('Error state is shown', (WidgetTester tester) async {
     await tester.setupBasicApp(
       child: RegistrationPage(
-        navigateAfterRegistrationPath: '/',
+        navigateAfterRegistrationPath: Routes.initial,
       ),
       overrides: [
         registrationStateNotifierProvider
@@ -41,7 +42,7 @@ void main() {
       (WidgetTester tester) async {
     await tester.setupBasicApp(
       child: RegistrationPage(
-        navigateAfterRegistrationPath: '/',
+        navigateAfterRegistrationPath: Routes.initial,
       ),
       overrides: [
         registrationStateNotifierProvider
@@ -52,14 +53,14 @@ void main() {
     mockRegistrationStateNotifier.debugState = RegistrationState.success();
     await tester.pump();
 
-    GoRouter.of(debugContext(tester)).location == '/home';
+    GoRouter.of(debugContext(tester)).location == Routes.home;
   });
 
   testWidgets('Register cannot be pressed if loading',
       (WidgetTester tester) async {
     await tester.setupBasicApp(
       child: RegistrationPage(
-        navigateAfterRegistrationPath: '/',
+        navigateAfterRegistrationPath: Routes.initial,
       ),
       overrides: [
         registrationStateNotifierProvider

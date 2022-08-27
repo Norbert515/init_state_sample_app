@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sample_app/navigation/routes.dart';
 import 'package:sample_app/style/typography.dart';
 import 'package:sample_app/utils/s.dart';
 
@@ -73,8 +74,8 @@ class RegistrationPage extends StatelessWidget {
                           EmailTextField(
                             onChanged: (value) {
                               ref
-                                  .read(
-                                      RegistrationProviders.emailStateProvider.state)
+                                  .read(RegistrationProviders
+                                      .emailStateProvider.state)
                                   .state = value;
                             },
                             errorMessage: registerState.maybeMap(
@@ -90,7 +91,8 @@ class RegistrationPage extends StatelessWidget {
                                   .state = value;
                             },
                             errorMessage: registerState.maybeMap(
-                              error: (e) => e.passwordError?.call(S.of(context)),
+                              error: (e) =>
+                                  e.passwordError?.call(S.of(context)),
                               orElse: () => null,
                             ),
                           ),
@@ -157,8 +159,8 @@ class RegistrationPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       onTap: () {
-                        context
-                            .go('/login?redirect=${navigateAfterRegistrationPath}');
+                        context.go(Routes.loginAndRedirect(
+                            navigateAfterRegistrationPath));
                       },
                     ),
                   ],

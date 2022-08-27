@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sample_app/navigation/routes.dart';
 
 /// [Returns] a [BuildContext] that is usable for InheritedWidget lookup.
 ///
@@ -35,7 +36,7 @@ Widget basicApp({
   final _router = GoRouter(
     routes: [
       GoRoute(
-        path: '/',
+        path: Routes.initial,
         pageBuilder: (context, state) => MaterialPage<void>(
           key: state.pageKey,
           child: Material(child: child),

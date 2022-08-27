@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:sample_app/utils/navigation_refresh.dart';
 
 import 'firebase_auth_provider.dart';
 
@@ -28,8 +27,7 @@ final userIdProvider = Provider<String?>((ref) {
 final authenticationStateNotifierProvider =
     StateNotifierProvider<AuthenticationStateNotifier, AuthenticationState>(
         (ref) {
-  return AuthenticationStateNotifier(
-      ref.read(firebaseAuthProvider), ref.read(navigationChangeProvider));
+  return AuthenticationStateNotifier(ref.read(firebaseAuthProvider));
 });
 
 @freezed
@@ -52,10 +50,8 @@ class AuthenticationState with _$AuthenticationState {
 /// Abstracts away firebase in a [StateNotifier] that can be read synchronously in
 /// the app but also listened to.
 class AuthenticationStateNotifier extends StateNotifier<AuthenticationState> {
-  AuthenticationStateNotifier(
-      this.firebaseAuth, NavigationChangeNotifier navigationChangeNotifier)
+  AuthenticationStateNotifier(this.firebaseAuth)
       : super(AuthenticationState.unauthenticated()) {
-    navigationChangeNotifier.refreshOnStateNotifier(this);
     _updateStateWithUser(firebaseAuth.currentUser);
     _authSubscription = firebaseAuth.userChanges().listen((user) {
       _updateStateWithUser(user);

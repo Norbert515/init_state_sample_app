@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sample_app/navigation/routes.dart';
 import 'package:sample_app/style/typography.dart';
 import 'package:sample_app/utils/s.dart';
 
@@ -105,7 +106,7 @@ class LoginPage extends StatelessWidget {
                                 textAlign: TextAlign.center,
                               ),
                               onTap: () {
-                                context.push('/password_reset');
+                                context.push(Routes.passwordReset);
                               },
                             ),
                           ),
@@ -149,8 +150,8 @@ class LoginPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     onTap: () {
-                      context
-                          .go('/register?redirect=${navigateAfterLoginPath}');
+                      context.go(
+                          Routes.registerAndRedirect(navigateAfterLoginPath));
                     },
                   ),
                 ],
