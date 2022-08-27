@@ -22,7 +22,7 @@ class _MyAppContent extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final _router = ref.read(routerProvider).instance;
+    final _router = ref.read(routerProvider).implementation;
 
     var myColors = ref.watch(myColorProvider);
     return MaterialApp.router(
