@@ -26,13 +26,19 @@ class InitStateSampleAppRouter {
     debugLogDiagnostics: true,
     refreshListenable: navigationChangeNotifier,
     redirect: (state) {
-      late final isAuthenticated = navigationChangeNotifier.isAuthenticated;
-      final goingToLogin = state.location.startsWith(Routes.login);
-      if (!isAuthenticated && !goingToLogin) {
+      final isAuthenticated = navigationChangeNotifier.isAuthenticated;
+      final authSection = [
+        Routes.login,
+        Routes.register,
+        Routes.passwordReset,
+      ];
+      final goingToAuthSection = authSection.contains(state.subloc);
+
+      if (!isAuthenticated && !goingToAuthSection) {
         var to = state.location;
         return Routes.loginAndRedirect(to);
       }
-      if (isAuthenticated && goingToLogin) {
+      if (isAuthenticated && goingToAuthSection) {
         return Routes.initial;
       }
       return null;
